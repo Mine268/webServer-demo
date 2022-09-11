@@ -47,7 +47,7 @@ public class RequestHandler implements Runnable {
         String request_path, request_arguments;
 
         if (request_type == RequestType.GET) {
-            var r_p_a = header_first_line.split("\\s")[1].split("&");
+            var r_p_a = header_first_line.split("\\s")[1].split("\\?");
             request_path = r_p_a[0];
             request_arguments = r_p_a.length == 2 ? r_p_a[1] : "";
         } else {
