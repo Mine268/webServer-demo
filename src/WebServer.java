@@ -27,8 +27,8 @@ public class WebServer {
         while (true) {
             try {
                 var socket = serverSocket.accept();
-//                threadPool.execute(new RequestHandler(socket));
-                new RequestHandler(socket).run();
+                threadPool.execute(new RequestHandler(socket));
+//                new RequestHandler(socket).run();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
