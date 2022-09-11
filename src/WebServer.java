@@ -4,7 +4,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class RequestManager {
+public class WebServer {
 
     ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
             10,
@@ -26,15 +26,13 @@ public class RequestManager {
 
         while (true) {
             try {
-                handleRequest(serverSocket.accept());
+                var socket = serverSocket.accept();
+//                threadPool.execute(new RequestHandler(socket));
+                new RequestHandler(socket).run();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
-    }
-
-    private void handleRequest(Socket socket) {
-        threadPool.execute(new WebRequestServer(socket));
     }
 
 }

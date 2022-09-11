@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,9 +19,15 @@ public class ServerConfig {
         }
     };
 
+    public static final Integer socket_timeout_limit = 20 * 1000; // ms
+
+    public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     public static final String webRoot = "webroot/";
 
     public static final String defaultPage = "index.html";
+
+    public static final String notFoundPage = "not_found.html";
 
     public static String getHtmlHeader(StatusCode statusCode) {
         return String.format("""
